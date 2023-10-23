@@ -41,13 +41,14 @@
 .primary-bg-color {
   --tw-bg-opacity: 1;
   /* background-color: rgb(250 204 21 / var(--tw-bg-opacity)); */
-  background-color: hsl(var(--pf, var(--p)) / var(--tw-bg-opacity));
+  background-color: #189fcd;
+  /* background-color: hsl(var(--pf, var(--p)) / var(--tw-bg-opacity)); */
   color: white;
   /* background-color: red; */
 }
 
 .secondary-bg-color {
-  background-color: hsl(var(--pf, var(--p)) / var(--tw-bg-opacity));
+  background-color: #189fcd;
 
 }
 

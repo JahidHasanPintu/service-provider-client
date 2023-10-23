@@ -20,6 +20,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import RequireAuth from './Components/RequireAuth/RequireAuth';
 import Middlebar from './Components/Head/Middlebar';
 import PostJob from './Components/PostJob/PostJob';
+import Jobs from './Components/Jobs/Jobs';
 function App() {
   return (
     <div className="App bg-slate-50">
@@ -40,6 +41,7 @@ function App() {
         </RequireAuth>}></Route>
         
         <Route path="/about" element={<About />}></Route>
+        <Route path="/jobs" element={<Jobs/>}></Route>
         
         <Route path="/login" element={<Login />}></Route>
         <Route path="/signup" element={<Signup />}></Route>
