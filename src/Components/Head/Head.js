@@ -170,7 +170,7 @@ const Head = () => {
                                     <div className="nav">
                                         <ul className="nav-wrapper flex xl:space-x-5 space-x-5">
 
-                                            <li><Link to={"/all-types"}><span className="flex items-center text-sm font-600 cursor-pointer primary-text-color" ><span> Design & Creative</span></span></Link>
+                                            <li><Link to={"/jobs"}><span className="flex items-center text-sm font-600 cursor-pointer primary-text-color" ><span> All Jobs</span></span></Link>
 
                                             </li>
                                             <li onClick={handleShopMenuView}>
@@ -233,7 +233,7 @@ const Head = () => {
 
                                             </li>
 
-                                            <li onClick={() => navigateToCategories(33)}><Link to={""}><span className="flex items-center text-sm font-600 cursor-pointer primary-text-color"><span>Sales & Marketting</span></span></Link></li>
+                                            <li onClick={() => navigateToCategories(33)}><Link to={""}><span className="flex items-center text-sm font-600 cursor-pointer primary-text-color"><span>Buy and Sell</span></span></Link></li>
 
                                         </ul>
                                     </div>
