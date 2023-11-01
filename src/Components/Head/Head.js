@@ -57,7 +57,7 @@ const Head = () => {
 
     }
     const navigateToCategories = (catID) => {
-        navigate(`/categories/${catID}`);
+        navigate(`/buy-sell/${catID}`);
 
 
     }

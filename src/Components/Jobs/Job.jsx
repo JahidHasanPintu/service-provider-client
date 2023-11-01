@@ -1,7 +1,7 @@
 import React from 'react';
 import './Job.css'
 import { FaArrowRight, FaBeer } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 const Job = (props) => {
     const { TITLE, BUDGET, DURATION, DESCRIPTION, EXPERIENCE, TYPE, SKILLS, createdAt } = props.service;
 
@@ -24,7 +24,11 @@ const Job = (props) => {
             return `${days} day${days === 1 ? '' : 's'} ago`;
         }
     };
+    const navigate = useNavigate();
+    const navigateToServiceDetails = (service) => {
+        navigate(`/job-details/${service._id}`, { state: { service } });
 
+    }
 
     return (
 
@@ -39,9 +43,9 @@ const Job = (props) => {
                 <p>{DESCRIPTION}</p>
                 <p>Skills: {SKILLS}</p>
                 <div className="card-actions justify-end">
-                    <Link to={"/job-details"}>
-                        <button className="btn btn-primary">Details <FaArrowRight /> </button>
-                    </Link>
+
+                    <button onClick={() => navigateToServiceDetails(props.service)} className="btn btn-primary">Details <FaArrowRight /> </button>
+
 
                 </div>
             </div>
