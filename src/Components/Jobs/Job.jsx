@@ -40,7 +40,7 @@ const Job = (props) => {
                     <p className="flex-1 text-blue-600">Time Require: {DURATION}</p>
                     <p className="flex-1 font-bold text-red-500">Budget: ৳ {BUDGET}</p>
                 </div>
-                <p>{DESCRIPTION}</p>
+                <p>{DESCRIPTION.slice(0, 60)}</p>
                 <p>Skills: {SKILLS}</p>
                 <div className="card-actions justify-end">
 

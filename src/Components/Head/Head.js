@@ -218,6 +218,9 @@ const Head = () => {
                                     <div className="nav">
                                         <ul className="nav-wrapper flex xl:space-x-5 space-x-5">
 
+                                            <li><Link to={"/"}><span className="flex items-center text-sm font-600 cursor-pointer primary-text-color" ><span> Home </span></span></Link>
+
+                                            </li>
                                             <li><Link to={"/jobs"}><span className="flex items-center text-sm font-600 cursor-pointer primary-text-color" ><span> All Jobs</span></span></Link>
 
                                             </li>
