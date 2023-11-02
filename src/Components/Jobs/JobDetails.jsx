@@ -27,25 +27,7 @@ const JobDetails = () => {
         setFormData({ ...formData, [name]: value });
     };
 
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        if (!user) {
-            toast.error("Login to bid !!")
-        } else {
-            try {
-                // Send a POST request to  API with formData
-                const response = await axios.post(API_URL, formData);
-                toast.success("Bid placed successfully");
-                console.log('Data successfully submitted:', response.data);
-                // navigate("/admin")
-
-            } catch (error) {
-                console.error('Error submitting data:', error);
-                toast.error("failed !", error);
-            }
-        }
-
-    };
+   
 
     const [bids, setBids] = useState([]);
     const [totalBids, setTotalBids] = useState([]);
@@ -70,6 +52,34 @@ const JobDetails = () => {
         fetchServices();
 
     }, [baseURL, service._id]);
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        if (!user) {
+            toast.error("Login to bid !!");
+        } else {
+            // Check if the user has already placed a bid for the same service
+            const hasBid = bids.some((bid) => bid.USER_ID._id === user._id && bid.SERVICE_ID === formData.SERVICE_ID);
+    
+            if (hasBid) {
+                toast.error("You already bid for this task");
+            }else if(service.USER_ID._id === user._id){
+                toast.error("You posted this task. You can't Bid ");
+            } else {
+                try {
+                    // Send a POST request to the API with formData
+                    const response = await axios.post(API_URL, formData);
+                    toast.success("Bid placed successfully");
+                    console.log('Data successfully submitted:', response.data);
+                    // navigate("/admin")
+                } catch (error) {
+                    console.error('Error submitting data:', error);
+                    toast.error("Failed!", error);
+                }
+            }
+        }
+    };
+    
 
     return (
         <div>

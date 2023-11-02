@@ -9,7 +9,57 @@ import { useProducts } from '../../hooks/useProducts';
 import i18n from '../../i18n';
 import { useTranslation } from 'react-i18next';
 const Head = () => {
-    const [categories] = useCategories(1, 100);
+    const categories = [
+        {
+            "id": "1",
+            "cat_name": "Painting Service",
+            "cat_image": "https://www.svgrepo.com//show/99774/paint-brush.svg",
+            
+          },
+        {
+            "id": "2",
+            "cat_name": "Electrician/ Electric Service",
+            "cat_image": "https://static.vecteezy.com/system/resources/previews/004/273/535/non_2x/electric-plug-socket-icon-symbol-design-free-vector.jpg",
+            
+          },
+        {
+            "id": "3",
+            "cat_name": "Plumbing & Sanitary Service",
+            "cat_image": "https://cdn-icons-png.flaticon.com/512/4635/4635163.png",
+            
+          },
+        {
+            "id": "4",
+            "cat_name": "Home Cleaning",
+            "cat_image": "https://cdn-icons-png.flaticon.com/512/2737/2737066.png",
+            
+          },
+        {
+            "id": "5",
+            "cat_name": "Pest Control",
+            "cat_image": "https://cdn-icons-png.flaticon.com/512/4295/4295647.png",
+            
+          },
+        {
+            "id": "6",
+            "cat_name": "Garden Clening",
+            "cat_image": "https://cdn-icons-png.flaticon.com/512/2737/2737066.png",
+            
+          },
+        {
+            "id": "7",
+            "cat_name": "House Shifting",
+            "cat_image": "https://cdn-icons-png.flaticon.com/512/5487/5487334.png",
+            
+          },
+        {
+            "id": "8",
+            "cat_name": "Baby Sitter Service",
+            "cat_image": "https://cdn-icons-png.flaticon.com/512/4660/4660683.png",
+            
+          },
+        ];
+
     const getData = useSelector((state) => state.cartReducer);
 
     const { t } = useTranslation();
@@ -72,8 +122,6 @@ const Head = () => {
         return () => document.body.removeEventListener("mousedown", closeMenu);
     }, []);
     
-    const [showFurnitureMenu, setShowFurnitureMenu] = useState(false);
-    const [showKitchenMenu, setShowKitchenMenu] = useState(false);
 
     return (
         <div className="text-start">
@@ -174,55 +222,53 @@ const Head = () => {
 
                                             </li>
                                             <li onClick={handleShopMenuView}>
-                                                <span className="flex items-center text-sm font-600 cursor-pointer primary-text-color" ><span> Development & IT</span><span className="ml-1.5 "><svg width="10" height="5" viewBox="0 0 10 5" fill="none" className="fill-current" xmlns="http://www.w3.org/2000/svg"><rect x="9.18359" y="0.90918" width="5.78538" height="1.28564" transform="rotate(135 9.18359 0.90918)"></rect><rect x="5.08984" y="5" width="5.78538" height="1.28564" transform="rotate(-135 5.08984 5)"></rect></svg></span></span>
+                                                <span className="flex items-center text-sm font-600 cursor-pointer primary-text-color" ><span> Service List</span><span className="ml-1.5 "><svg width="10" height="5" viewBox="0 0 10 5" fill="none" className="fill-current" xmlns="http://www.w3.org/2000/svg"><rect x="9.18359" y="0.90918" width="5.78538" height="1.28564" transform="rotate(135 9.18359 0.90918)"></rect><rect x="5.08984" y="5" width="5.78538" height="1.28564" transform="rotate(-135 5.08984 5)"></rect></svg></span></span>
                                                 {showShopMenu && (
                                                     <div className="sub-menu w-full absolute left-0 top-[60px] z-50 transition-all duration-300 ease-in-out " onMouseLeave={handleShopMenuView} >
                                                         <div className="mega-menu-wrapper w-full bg-white p-[30px] flex justify-between items-center transition-all duration-300 ease-in-out" style={{ minHeight: '295px', boxShadow: 'rgba(0, 0, 0, 0.14) 0px 15px 50px 0px' }}>
                                                             <div className="categories-wrapper flex-1 h-full flex justify-around -ml-[70px]">
                                                                 <div>
                                                                     <div className="category">
-                                                                        <h1 className="text-[13px] font-700 text-qblack uppercase mb-[13px]">Web Development</h1>
+                                                                        <h1 className="text-[13px] font-700 text-qblack uppercase mb-[13px]">Electricial Work</h1>
                                                                     </div>
                                                                     <div className="category-items">
                                                                         <ul className="flex flex-col space-y-2">
-                                                                            <li><a href="/all-types"><span className="text-qgray text-sm font-400 border-b border-transparent hover:text-qyellow hover:border-qyellow">React Developer </span></a></li>
-                                                                            <li><a href="/all-types"><span className="text-qgray text-sm font-400 border-b border-transparent hover:text-qyellow hover:border-qyellow">NodeJs Dev</span></a></li>
-                                                                            <li><a href="/all-types"><span className="text-qgray text-sm font-400 border-b border-transparent hover:text-qyellow hover:border-qyellow">Mern Stack</span></a></li>
-                                                                            <li><a href="/all-types"><span className="text-qgray text-sm font-400 border-b border-transparent hover:text-qyellow hover:border-qyellow">Bootstrap</span></a></li>
-                                                                            <li><a href="/all-types"><span className="text-qgray text-sm font-400 border-b border-transparent hover:text-qyellow hover:border-qyellow">Tailwind CSS</span></a></li>
+                                                                            <li><a href="/all-types"><span className="text-qgray text-sm font-400 border-b border-transparent hover:text-qyellow hover:border-qyellow">Electrician/ Electric Service </span></a></li>
+                                                                            <li><a href="/all-types"><span className="text-qgray text-sm font-400 border-b border-transparent hover:text-qyellow hover:border-qyellow">Plumbing & Sanitary Service  </span></a></li>
+                                                                            <li><a href="/all-types"><span className="text-qgray text-sm font-400 border-b border-transparent hover:text-qyellow hover:border-qyellow">Painting Service </span></a></li>
+                                                                            
                                                                         </ul>
                                                                     </div>
                                                                 </div>
                                                                 <div>
                                                                     <div className="category">
-                                                                        <h1 className="text-[13px] font-700 text-qblack uppercase mb-[13px]">Mobile App</h1>
+                                                                        <h1 className="text-[13px] font-700 text-qblack uppercase mb-[13px]">Cleaning Works</h1>
                                                                     </div>
                                                                     <div className="category-items">
                                                                         <ul className="flex flex-col space-y-2">
-                                                                            <li><a href="/all-types"><span className="text-qgray text-sm font-400 border-b border-transparent hover:text-qyellow hover:border-qyellow">Java Dev</span></a></li>
-                                                                            <li><a href="/all-types"><span className="text-qgray text-sm font-400 border-b border-transparent hover:text-qyellow hover:border-qyellow">React Native</span></a></li>
-                                                                            <li><a href="/all-types"><span className="text-qgray text-sm font-400 border-b border-transparent hover:text-qyellow hover:border-qyellow">Flutter</span></a></li>
-                                                                            <li><a href="/all-types"><span className="text-qgray text-sm font-400 border-b border-transparent hover:text-qyellow hover:border-qyellow">IOS Dev</span></a></li>
+                                                                            <li><a href="/all-types"><span className="text-qgray text-sm font-400 border-b border-transparent hover:text-qyellow hover:border-qyellow">Home Cleaning </span></a></li>
+                                                                            <li><a href="/all-types"><span className="text-qgray text-sm font-400 border-b border-transparent hover:text-qyellow hover:border-qyellow">Pest Control </span></a></li>
+                                                                            <li><a href="/all-types"><span className="text-qgray text-sm font-400 border-b border-transparent hover:text-qyellow hover:border-qyellow">Garden Clening</span></a></li>
+                                                                           
                                                                         </ul>
                                                                     </div>
                                                                 </div>
                                                                 <div>
                                                                     <div className="category">
-                                                                        <h1 className="text-[13px] font-700 text-qblack uppercase mb-[13px]">Programming Languages</h1>
+                                                                        <h1 className="text-[13px] font-700 text-qblack uppercase mb-[13px]">House Releted </h1>
                                                                     </div>
                                                                     <div className="category-items">
                                                                         <ul className="flex flex-col space-y-2">
-                                                                            <li><a href="/all-types"><span className="text-qgray text-sm font-400 border-b border-transparent hover:text-qyellow hover:border-qyellow">C &amp; C++</span></a></li>
-                                                                            <li><a href="/all-types"><span className="text-qgray text-sm font-400 border-b border-transparent hover:text-qyellow hover:border-qyellow">C# &amp; .NET CORE</span></a></li>
-                                                                            <li><a href="/all-types"><span className="text-qgray text-sm font-400 border-b border-transparent hover:text-qyellow hover:border-qyellow">Python</span></a></li>
-                                                                            <li><a href="/all-types"><span className="text-qgray text-sm font-400 border-b border-transparent hover:text-qyellow hover:border-qyellow">Java Script</span></a></li>
+                                                                            <li><a href="/all-types"><span className="text-qgray text-sm font-400 border-b border-transparent hover:text-qyellow hover:border-qyellow">  House Shifting</span></a></li>
+                                                                            <li><a href="/all-types"><span className="text-qgray text-sm font-400 border-b border-transparent hover:text-qyellow hover:border-qyellow">Baby Sitter Service</span></a></li>
+                                                                            
                                                                         </ul>
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                             <div className="thumbnil w-[348px] h-full">
                                                                 <div className="w-full h-[235px]">
-                                                                    <img width="" src="https://assets-global.website-files.com/6410ebf8e483b5bb2c86eb27/6410ebf8e483b53d6186fc53_ABM%20College%20Web%20developer%20main.jpg" alt="" className="w-full h-full object-contain" />
+                                                                    <img width="" src="https://moversbd.com/wp-content/uploads/2023/05/House-Shifting-Services-in-Paltan-Bazar-Dhaka.jpg" alt="" className="w-full h-full object-contain" />
                                                                 </div>
                                                             </div>
                                                         </div>
