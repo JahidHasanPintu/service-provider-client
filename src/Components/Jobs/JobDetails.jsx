@@ -64,7 +64,7 @@ const JobDetails = () => {
             if (hasBid) {
                 toast.error("You already bid for this task");
             }else if(service.USER_ID._id === user._id){
-                toast.error("You posted this task. You can't Bid ");
+                toast.error(" You can't Bid your own task ");
             } else {
                 try {
                     // Send a POST request to the API with formData
@@ -155,6 +155,12 @@ const JobDetails = () => {
                                                 <Bids key={bid._id} bid={bid} />
                                             )
                                         }
+                                        {
+                                            totalBids?(
+                                                <p></p>
+                                            ):(
+                                                <h2>No Bids Yet</h2>
+                                                )}
                                     </ul>
                                 )}
 
