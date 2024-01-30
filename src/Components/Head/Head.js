@@ -14,51 +14,51 @@ const Head = () => {
             "id": "1",
             "cat_name": "Painting Service",
             "cat_image": "https://www.svgrepo.com//show/99774/paint-brush.svg",
-            
-          },
+
+        },
         {
             "id": "2",
             "cat_name": "Electrician/ Electric Service",
             "cat_image": "https://static.vecteezy.com/system/resources/previews/004/273/535/non_2x/electric-plug-socket-icon-symbol-design-free-vector.jpg",
-            
-          },
+
+        },
         {
             "id": "3",
             "cat_name": "Plumbing & Sanitary Service",
             "cat_image": "https://cdn-icons-png.flaticon.com/512/4635/4635163.png",
-            
-          },
+
+        },
         {
             "id": "4",
             "cat_name": "Home Cleaning",
             "cat_image": "https://cdn-icons-png.flaticon.com/512/2737/2737066.png",
-            
-          },
+
+        },
         {
             "id": "5",
             "cat_name": "Pest Control",
             "cat_image": "https://cdn-icons-png.flaticon.com/512/4295/4295647.png",
-            
-          },
+
+        },
         {
             "id": "6",
             "cat_name": "Garden Clening",
             "cat_image": "https://cdn-icons-png.flaticon.com/512/2737/2737066.png",
-            
-          },
+
+        },
         {
             "id": "7",
             "cat_name": "House Shifting",
             "cat_image": "https://cdn-icons-png.flaticon.com/512/5487/5487334.png",
-            
-          },
+
+        },
         {
             "id": "8",
             "cat_name": "Baby Sitter Service",
             "cat_image": "https://cdn-icons-png.flaticon.com/512/4660/4660683.png",
-            
-          },
-        ];
+
+        },
+    ];
 
     const getData = useSelector((state) => state.cartReducer);
 
@@ -121,7 +121,7 @@ const Head = () => {
 
         return () => document.body.removeEventListener("mousedown", closeMenu);
     }, []);
-    
+
 
     return (
         <div className="text-start">
@@ -211,7 +211,7 @@ const Head = () => {
                                                         return null; // Exclude brand with id 0
                                                     })
                                                 }
-                                                
+
                                             </ul>
                                         </div>
                                     </div>
@@ -239,7 +239,7 @@ const Head = () => {
                                                                             <li><a href="/all-types"><span className="text-qgray text-sm font-400 border-b border-transparent hover:text-qyellow hover:border-qyellow">Electrician/ Electric Service </span></a></li>
                                                                             <li><a href="/all-types"><span className="text-qgray text-sm font-400 border-b border-transparent hover:text-qyellow hover:border-qyellow">Plumbing & Sanitary Service  </span></a></li>
                                                                             <li><a href="/all-types"><span className="text-qgray text-sm font-400 border-b border-transparent hover:text-qyellow hover:border-qyellow">Painting Service </span></a></li>
-                                                                            
+
                                                                         </ul>
                                                                     </div>
                                                                 </div>
@@ -252,7 +252,7 @@ const Head = () => {
                                                                             <li><a href="/all-types"><span className="text-qgray text-sm font-400 border-b border-transparent hover:text-qyellow hover:border-qyellow">Home Cleaning </span></a></li>
                                                                             <li><a href="/all-types"><span className="text-qgray text-sm font-400 border-b border-transparent hover:text-qyellow hover:border-qyellow">Pest Control </span></a></li>
                                                                             <li><a href="/all-types"><span className="text-qgray text-sm font-400 border-b border-transparent hover:text-qyellow hover:border-qyellow">Garden Clening</span></a></li>
-                                                                           
+
                                                                         </ul>
                                                                     </div>
                                                                 </div>
@@ -264,7 +264,7 @@ const Head = () => {
                                                                         <ul className="flex flex-col space-y-2">
                                                                             <li><a href="/all-types"><span className="text-qgray text-sm font-400 border-b border-transparent hover:text-qyellow hover:border-qyellow">  House Shifting</span></a></li>
                                                                             <li><a href="/all-types"><span className="text-qgray text-sm font-400 border-b border-transparent hover:text-qyellow hover:border-qyellow">Baby Sitter Service</span></a></li>
-                                                                            
+
                                                                         </ul>
                                                                     </div>
                                                                 </div>
@@ -282,7 +282,12 @@ const Head = () => {
 
                                             </li>
 
-                                            <li onClick={() => navigateToCategories(33)}><Link to={""}><span className="flex items-center text-sm font-600 cursor-pointer primary-text-color"><span>Buy and Sell</span></span></Link></li>
+                                            <li><Link to={"/buy-sell"}><span className="flex items-center text-sm font-600 cursor-pointer primary-text-color"><span>Buy and Sell</span></span></Link></li>
+                                            {/* <li><Link to={"/about"}><span className="flex items-center text-sm font-600 cursor-pointer primary-text-color"><span>About</span></span></Link></li>
+                                            <li><Link to={"/contact"}><span className="flex items-center text-sm font-600 cursor-pointer primary-text-color"><span>Contact</span></span></Link></li>
+                                            <li><Link to={"/faq"}><span className="flex items-center text-sm font-600 cursor-pointer primary-text-color"><span>FAQ</span></span></Link></li>
+                                            <li><Link to={"/privacy-policy"}><span className="flex items-center text-sm font-600 cursor-pointer primary-text-color"><span>Privacy Policy</span></span></Link></li>
+                                            <li><Link to={"/terms-condition"}><span className="flex items-center text-sm font-600 cursor-pointer primary-text-color"><span>Terms</span></span></Link></li> */}
 
                                         </ul>
                                     </div>

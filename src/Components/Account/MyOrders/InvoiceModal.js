@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { getApiUrl } from '../../../api/apiURL';
 import { useLocation } from 'react-router-dom';
 import axios from 'axios';
-import { html2pdf } from 'html2pdf.js';
 
 const InvoiceModal = () => {
     const location = useLocation();
@@ -55,33 +54,6 @@ const InvoiceModal = () => {
 
 
 
-    const generatePDF = async () => {
-        const cardElement = document.querySelector('.card'); // Select the card element to convert to PDF
-
-        // Options for pdf generation
-        const pdfOptions = {
-            margin: 10,
-            filename: 'invoice.pdf',
-            image: { type: 'jpeg', quality: 0.98 },
-            html2canvas: { scale: 2 },
-            jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
-        };
-
-        try {
-            const pdf = await html2pdf().from(cardElement).set(pdfOptions).outputPdf();
-            // Convert the PDF to Blob for downloading
-            const pdfBlob = new Blob([pdf], { type: 'application/pdf' });
-            const pdfUrl = URL.createObjectURL(pdfBlob);
-            // Create a temporary link element for downloading
-            const a = document.createElement('a');
-            a.href = pdfUrl;
-            a.download = pdfOptions.filename;
-            a.click();
-            URL.revokeObjectURL(pdfUrl);
-        } catch (error) {
-            console.error('Error generating PDF:', error);
-        }
-    };
 
 
 
