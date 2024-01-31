@@ -6,6 +6,7 @@ export const useProducts = (page, limit, search, category, brand) => {
   const [products, setProducts] = useState([]);
   const [total, setTotal] = useState(0);
   const [totalPages, setTotalPages] = useState(0);
+  const [productOnCurrentPage, setProductOnCurrentPage] = useState(0);
   const [loading,setLoading] = useState(false);
 
   useEffect(() => {
@@ -24,12 +25,13 @@ export const useProducts = (page, limit, search, category, brand) => {
           },
         });
 
-        const { success, products, totalItem,totalPages } = response.data;
+        const { success, products, totalItem,productsOnCurrentPage,totalPages } = response.data;
 
         if (success) {
           setProducts(products);
           setTotal(totalItem);
           setTotalPages(totalPages);
+          setProductOnCurrentPage(productsOnCurrentPage);
         } else {
           console.error("Error fetching data");
         }
@@ -42,5 +44,5 @@ export const useProducts = (page, limit, search, category, brand) => {
     
   }, [page, limit, search, category,brand]);
 
-  return [products, total,totalPages,loading];
+  return [products, total,totalPages,productOnCurrentPage,loading];
 };

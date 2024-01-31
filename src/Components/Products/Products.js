@@ -1,33 +1,22 @@
 import React, { useEffect, useState } from 'react';
 // import useGeolocation from '../../hooks/useGeolocation ';
 import Product from './Product';
+import { useProducts } from '../../hooks/useProducts';
+import Loading from '../Loading/Loading';
 
 const Products = () => {
-    const [proposals, setProposals] = useState([
-        1, 2, 3, 4, 5, 6, 7, 8, 9, 10
-    ]);
-    const [searchTerm, setSearchTerm] = useState('');
-    // const location = useGeolocation();
-
-    // useEffect(() => {
-    //     const fetchProposals = async () => {
-    //         try {
-    //             const url = `http://localhost:5000/proposals${searchTerm ? `?subject=${searchTerm}` : ''}`;
-    //             const response = await fetch(url);
-    //             const data = await response.json();
-    //             setProposals(data);
-    //         } catch (error) {
-    //             console.error(error);
-    //         }
-    //     };
-
-    //     if (location) {
-    //         fetchProposals();
-    //     }
-    // }, [location, searchTerm]);
+    const [page, setPage] = useState(1);
+    const [search, setSearch] = useState("");
+    const [category, setCategory] = useState("");
+    const [brand, setBrand] = useState("");
+    const [limit, setLimit] = useState(10);
+    const [products, total, totalPages,productOnCurrentPage, loading] = useProducts(page, limit, search, category, brand);
+    // if (loading) {
+    //     return <Loading />
+    // }
 
     const handleSearch = (event) => {
-        setSearchTerm(event.target.value);
+        setSearch(event.target.value);
     };
 
     return (
@@ -76,10 +65,10 @@ const Products = () => {
                 <div className="mt-2 px-2 flex flex-row items-center self-center justify-center flex-shrink-0 shadow-md lg:justify-between">
                     <div>
                         <h2 className='text-start font-bold px-5'> Products for you </h2>
-                        <h4 className='text-start px-5 mb-5'>1 - 20 of 23 results</h4>
+                        <h4 className='text-start px-5 mb-5'>1 - {productOnCurrentPage} of {total} results</h4>
                     </div>
                     <div className="flex flex-row">
-                        <input type="text" placeholder="product name" className="w-3/5 p-3 rounded-l-lg sm:w-2/3" value={searchTerm} onChange={handleSearch}/>
+                        <input type="text" placeholder="product name" className="w-3/5 p-3 rounded-l-lg sm:w-2/3" value={search} onChange={handleSearch} />
                         <button type="button" className="w-2/5 p-3 font-semibold rounded-r-lg sm:w-1/3 bg-blue-400 text-gray-900">Search</button>
                     </div>
                 </div>
@@ -106,16 +95,24 @@ const Products = () => {
 
                 </form> */}
 
-
-                <div className="grid grid-cols-3 gap-2 justify-items-center mt-2 mb-5">
+                {loading ? (
+                    <Loading />
+                ) : (
+                    <div className="grid grid-cols-3 gap-2 justify-items-center mt-2 mb-5">
+                        {products?.map(product => (
+                            <Product key={product._id} product={product} />
+                        ))}
+                    </div>
+                )}
+                {/* <div className="grid grid-cols-3 gap-2 justify-items-center mt-2 mb-5">
 
                     {
-                        proposals.map(proposal =>
-                            <Product key={proposal._id} proposal={proposal} />
+                        products?.map(product =>
+                            <Product key={product._id} product={product} />
                         )
                     }
 
-                </div>
+                </div> */}
 
             </div>
 
