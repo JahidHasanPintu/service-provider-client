@@ -64,7 +64,7 @@ const Dashboard = () => {
                                 {pendingCount}
                             </a>
                             <a href="#" class="no-underline text-white text-lg">
-                                Total Pending
+                                Total Bids
                             </a>
                         </div>
                     </div>
@@ -75,7 +75,7 @@ const Dashboard = () => {
                             {deliveredCount}
                             </a>
                             <a href="#" class="no-underline text-white text-lg">
-                                Completed
+                                Total Jobs
                             </a>
                         </div>
                     </div>
@@ -86,7 +86,7 @@ const Dashboard = () => {
                             {unpaidCount}
                             </a>
                             <a href="#" class="no-underline text-white text-lg">
-                                Total Unpaid
+                                Total Product
                             </a>
                         </div>
                     </div>
