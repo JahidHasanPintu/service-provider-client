@@ -2,9 +2,10 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { getApiUrl } from "../api/apiURL";
 
-export const useProducts = (page, limit, search, brandID, catID, subcatID, sort,offer) => {
+export const useProducts = (page, limit, search, category, brand) => {
   const [products, setProducts] = useState([]);
   const [total, setTotal] = useState(0);
+  const [totalPages, setTotalPages] = useState(0);
   const [loading,setLoading] = useState(false);
 
   useEffect(() => {
@@ -13,38 +14,22 @@ export const useProducts = (page, limit, search, brandID, catID, subcatID, sort,
     const getAllProducts = async () => {
       setLoading(true);
       try {
-        let brandIdString = '';
-        let catIdString = '';
-
-        if (Array.isArray(brandID)) {
-          brandIdString = brandID.join(',');
-        }else{
-          brandIdString = brandID;
-        }
-
-        if (Array.isArray(catID)) {
-          catIdString = catID.join(',');
-        }else{
-          catIdString = catID;
-        }
         const response = await axios.get(`${baseURL}/products`, {
           params: {
             page,
             limit,
             search,
-            brand_id:brandIdString,
-            cat_id: catIdString,
-            subcat_id: subcatID,
-            sort,
-            offer,
+            category, 
+            brand
           },
         });
 
-        const { success, data, totalItem } = response.data;
+        const { success, products, totalItem,totalPages } = response.data;
 
         if (success) {
-          setProducts(data);
+          setProducts(products);
           setTotal(totalItem);
+          setTotalPages(totalPages);
         } else {
           console.error("Error fetching data");
         }
@@ -55,7 +40,7 @@ export const useProducts = (page, limit, search, brandID, catID, subcatID, sort,
     };
     getAllProducts();
     
-  }, [page, limit, search, brandID, catID, subcatID, sort,offer]);
+  }, [page, limit, search, category,brand]);
 
-  return [products, total,loading];
+  return [products, total,totalPages,loading];
 };

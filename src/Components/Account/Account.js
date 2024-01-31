@@ -8,6 +8,8 @@ import MyOrders from './MyOrders/MyOrders';
 import Settings from './Settings/Settings';
 import Search from './Search/Search';
 import InvoiceModal from './MyOrders/InvoiceModal';
+import AllProducts from './AllProducts/AllProducts';
+import AddNewProduct from './AllProducts/AddNewProduct';
 
 const Account = () => {
    
@@ -23,7 +25,8 @@ const Account = () => {
                             <Routes>
                             
                                 <Route path="/" element={<Dashboard/>}></Route>
-                                <Route path="/chat" element={<Dashboard/>}></Route>
+                                <Route path="/products" element={<AllProducts/>}></Route>
+                                <Route path="/add-products" element={<AddNewProduct/>}></Route>
                                 <Route path="/my-order" element={<MyOrders/>}></Route>
                                 <Route path="/invoice" element={<InvoiceModal/>}></Route>
                                 <Route path="/invoice/:inVID" element={<InvoiceModal/>}></Route>
