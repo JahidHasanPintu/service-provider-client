@@ -7,10 +7,9 @@ export const useProducts = (page, limit, search, category, brand) => {
   const [total, setTotal] = useState(0);
   const [totalPages, setTotalPages] = useState(0);
   const [productOnCurrentPage, setProductOnCurrentPage] = useState(0);
-  const [loading,setLoading] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    
     const baseURL = getApiUrl();
     const getAllProducts = async () => {
       setLoading(true);
@@ -20,12 +19,12 @@ export const useProducts = (page, limit, search, category, brand) => {
             page,
             limit,
             search,
-            category, 
-            brand
+            category,
+            brand,
           },
         });
 
-        const { success, products, totalItem,productsOnCurrentPage,totalPages } = response.data;
+        const { success, products, totalItem, productsOnCurrentPage, totalPages } = response.data;
 
         if (success) {
           setProducts(products);
@@ -41,8 +40,37 @@ export const useProducts = (page, limit, search, category, brand) => {
       setLoading(false);
     };
     getAllProducts();
-    
-  }, [page, limit, search, category,brand]);
+  }, [page, limit, search, category, brand]);
 
-  return [products, total,totalPages,productOnCurrentPage,loading];
+  const updateProducts = async () => {
+    try {
+      const baseURL = getApiUrl();
+      setLoading(true);
+      const response = await axios.get(`${baseURL}/products`, {
+        params: {
+          page,
+          limit,
+          search,
+          category,
+          brand,
+        },
+      });
+
+      const { success, products, totalItem, productsOnCurrentPage, totalPages } = response.data;
+
+      if (success) {
+        setProducts(products);
+        setTotal(totalItem);
+        setTotalPages(totalPages);
+        setProductOnCurrentPage(productsOnCurrentPage);
+      } else {
+        console.error("Error updating products");
+      }
+    } catch (error) {
+      console.error("Error updating products", error);
+    }
+    setLoading(false);
+  };
+
+  return [products, total, totalPages, productOnCurrentPage, loading, updateProducts];
 };

@@ -10,6 +10,7 @@ import Search from './Search/Search';
 import InvoiceModal from './MyOrders/InvoiceModal';
 import AllProducts from './AllProducts/AllProducts';
 import AddNewProduct from './AllProducts/AddNewProduct';
+import EditProduct from './AllProducts/EditProduct';
 
 const Account = () => {
    
@@ -26,6 +27,8 @@ const Account = () => {
                             
                                 <Route path="/" element={<Dashboard/>}></Route>
                                 <Route path="/products" element={<AllProducts/>}></Route>
+                                <Route path="/edit-product" element={<EditProduct/>}></Route>
+                                <Route path="/edit-product/:prodID" element={<EditProduct/>}></Route>
                                 <Route path="/add-products" element={<AddNewProduct/>}></Route>
                                 <Route path="/my-order" element={<MyOrders/>}></Route>
                                 <Route path="/invoice" element={<InvoiceModal/>}></Route>
