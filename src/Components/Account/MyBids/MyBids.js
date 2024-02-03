@@ -1,55 +1,30 @@
-import React, { useEffect, useState } from 'react';
-import Pagination from '../../../Shared/Pagination/Pagination';
-import { getApiUrl } from '../../../api/apiURL';
-import { useNavigate } from 'react-router-dom';
-import Loading from '../../Loading/Loading';
-import { toast } from 'react-toastify';
 import axios from 'axios';
+import React, { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
+import { toast } from 'react-toastify';
+import { getApiUrl } from '../../../api/apiURL';
 
-const AllBids = () => {
+const MyBids = () => {
     const baseURL = getApiUrl();
-    const [page, setPage] = useState(1);
-    const [search, setSearch] = useState("");
     const [bids, setBids] = useState([]);
-    const [brand, setBrand] = useState("");
-    const [limit, setLimit] = useState(10);
-    const [loading, setLoading] = useState(false);
-    const [totalPages, setTotalPages] = useState(0);
-    const navigate = useNavigate();
-
+    const getData = useSelector((state) => state.authReducer);
+    const user = getData.user.user;
     useEffect(() => {
-        const getBids = async () => {
-          setLoading(true);
-          try {
-            const response = await axios.get(`${baseURL}/bids/all-bids`, {
-              params: {
-                page,
-                limit,
-              },
-            });
+        const apiUrl = `http://localhost:5000/bids/bidsbyuser/${user._id}`;
     
-            const { success, bids, totalPages } = response.data;
-    
-            if (success) {
-              setBids(bids);
-              setTotalPages(totalPages);
-              console.log(bids);
-            } else {
-              console.error("Error fetching data");
-            }
-          } catch (error) {
-            console.error("Error fetching data", error);
-          }
-          setLoading(false);
-        };
-        getBids();
-      }, [page, limit]);
-    
-    if (loading) {
-        return <Loading />
-    }
+        // Make the request using Axios
+        axios.get(apiUrl)
+          .then(response => {
+            console.log(response.data);
+            setBids(response.data);
+          })
+          .catch(error => {
+            console.error('Error fetching data:', error);
+            // Handle errors here
+          });
+      }, [user]); 
 
-    const handleDelete = async (prodID) => {
+      const handleDelete = async (prodID) => {
         try {
             const response = await axios.delete(`${baseURL}/bids/delete/${prodID}`);
             if (response.status === 200) {
@@ -89,8 +64,8 @@ const AllBids = () => {
                             <tr key={bid._id}>
                                 <td className="py-2 px-4 border-b">{index + 1}</td>
                                 {/* <td className="py-2 px-4 border-b">{bid._id}</td> */}
-                                <td className="py-2 px-4 border-b">{bid?.SERVICE_ID?.TITLE}</td>
-                                <td className="py-2 px-4 border-b">{bid?.USER_ID?.name}</td>
+                                <td className="py-2 px-4 border-b">{bid?.DETAILS}</td>
+                                <td className="py-2 px-4 border-b">{bid.STATUS}</td>
                                 <td className="py-2 px-4 border-b">{bid.STATUS}</td>
                                 {/* <td className="py-2 px-4 border-b">{bid.DETAILS}</td> */}
                                 {/* <td className="py-2 px-4 border-b">{bid.brand}</td> */}
@@ -111,11 +86,11 @@ const AllBids = () => {
                     </tbody>
                 </table>
 
-                <Pagination page={page} totalPages={totalPages} setPage={setPage} />
+                {/* <Pagination page={page} totalPages={totalPages} setPage={setPage} /> */}
             </div>
 
         </div>
     );
 };
 
-export default AllBids;
+export default MyBids;

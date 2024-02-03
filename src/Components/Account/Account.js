@@ -16,6 +16,8 @@ import Users from './Users/Users';
 import AllJobs from './AllJobs/AllJobs';
 import AllBids from './AllBids/AllBids';
 import AllOrder from './AllOrder/AllOrder';
+import MyJobs from './MyJobs/MyJobs';
+import MyBids from './MyBids/MyBids';
 
 const Account = () => {
    
@@ -39,7 +41,9 @@ const Account = () => {
                                 <Route path="/my-order" element={<MyOrders/>}></Route>
                                 <Route path="/all-order" element={<AllOrder/>}></Route>
                                 <Route path="/all-jobs" element={<AllJobs/>}></Route>
+                                <Route path="/jobs" element={<MyJobs/>}></Route>
                                 <Route path="/all-bids" element={<AllBids/>}></Route>
+                                <Route path="/bids" element={<MyBids/>}></Route>
                                 <Route path="/invoice" element={<InvoiceModal/>}></Route>
                                 <Route path="/invoice/:inVID" element={<InvoiceModal/>}></Route>
                                 <Route path="/settings" element={<Settings/>}></Route>
