@@ -7,14 +7,32 @@ import { useProducts } from "../../../hooks/useProducts";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { getApiUrl } from "../../../api/apiURL";
+import { useSelector } from "react-redux";
 
 const MyOrders = () => {
+  const getData = useSelector((state) => state.authReducer);
+    const user = getData.user.user;
   const [jobs, setJobs] = useState([]);
+  // useEffect(() => {
+  //   fetch(`http://localhost:5000/orders/orderbyuser/${user._id}}`)
+  //     .then((res) => res.json())
+  //     .then((data) => setJobs(data));
+  // }, []);
+
   useEffect(() => {
-    fetch("http://localhost:5000/orders")
-      .then((res) => res.json())
-      .then((data) => setJobs(data.orders));
-  }, []);
+    const apiUrl = `http://localhost:5000/orders/orderbyuser/${user._id}`;
+
+    // Make the request using Axios
+    axios.get(apiUrl)
+      .then(response => {
+        console.log(response.data);
+        setJobs(response.data);
+      })
+      .catch(error => {
+        console.error('Error fetching data:', error);
+        // Handle errors here
+      });
+  }, [user]); 
   console.log("hello");
   const baseURL = getApiUrl();
   const [page, setPage] = useState(1);

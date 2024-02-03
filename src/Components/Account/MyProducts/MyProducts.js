@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { getApiUrl } from '../../../api/apiURL';
 import { Link, useNavigate } from 'react-router-dom';
 import { useProducts } from '../../../hooks/useProducts';
@@ -6,6 +6,7 @@ import Loading from '../../Loading/Loading';
 import axios from 'axios';
 import { toast } from 'react-toastify';
 import Pagination from '../../../Shared/Pagination/Pagination';
+import { useSelector } from 'react-redux';
 
 const MyProducts = () => {
     const baseURL = getApiUrl();
@@ -14,11 +15,28 @@ const MyProducts = () => {
     const [category, setCategory] = useState("");
     const [brand, setBrand] = useState("");
     const [limit, setLimit] = useState(10);
+    const [products, setProducts] = useState([]);
     const navigate = useNavigate();
-    const [products, total, totalPages, productOnCurrentPage, loading,updateProducts] = useProducts(page, limit, search, category, brand);
-    if (loading) {
-        return <Loading />
-    }
+    const getData = useSelector((state) => state.authReducer);
+    const user = getData.user.user;
+    // const [products, total, totalPages, productOnCurrentPage, loading,updateProducts] = useProducts(page, limit, search, category, brand);
+    useEffect(() => {
+        const apiUrl = `http://localhost:5000/products/user/${user._id}`;
+    
+        // Make the request using Axios
+        axios.get(apiUrl)
+          .then(response => {
+            console.log(response.data.products);
+            setProducts(response.data.products);
+          })
+          .catch(error => {
+            console.error('Error fetching data:', error);
+            // Handle errors here
+          });
+      }, [user]); 
+    // if (loading) {
+    //     return <Loading />
+    // }
 
     const handleDelete = async (prodID) => {
         try {
@@ -26,7 +44,7 @@ const MyProducts = () => {
             if (response.status === 200) {
                 toast.success("Product deleted successfully")
                 console.log('Product deleted successfully');
-                updateProducts();
+                // updateProducts();
             } else {
                 console.error('Failed to delete product');
             }
@@ -83,7 +101,7 @@ const MyProducts = () => {
                     </tbody>
                 </table>
 
-                <Pagination page={page} totalPages={totalPages} setPage={setPage} />
+                {/* <Pagination page={page} totalPages={totalPages} setPage={setPage} /> */}
             </div>
 
         </div>

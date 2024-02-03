@@ -51,21 +51,22 @@ const AllBids = () => {
 
     const handleDelete = async (prodID) => {
         try {
-            const response = await axios.delete(`${baseURL}/products/delete/${prodID}`);
+            const response = await axios.delete(`${baseURL}/bids/delete/${prodID}`);
             if (response.status === 200) {
-                toast.success("Product deleted successfully")
-                console.log('Product deleted successfully');
+                toast.success("Bids deleted successfully")
+                console.log('Bids deleted successfully');
                 // updateProducts();
             } else {
-                console.error('Failed to delete product');
+                console.error('Failed to delete Bid');
             }
         } catch (error) {
-            console.error('Error deleting product:', error);
+            console.error('Error deleting Bid:', error);
         }
     };
 
     const handleEdit = (product) => {
-        navigate(`/account/edit-product/${product._id}`, { state: { product } });
+        console.log("Editing bid");
+        // navigate(`/account/edit-product/${product._id}`, { state: { product } });
     }
     return (
         <div>
@@ -74,9 +75,10 @@ const AllBids = () => {
                     <thead>
                         <tr className="bg-gray-200">
                             <th className="py-2 px-4 border-b">#</th>
-                            <th className="py-2 px-4 border-b">Bider Name</th>
                             <th className="py-2 px-4 border-b">Job Title</th>
-                            <th className="py-2 px-4 border-b">Details</th>
+                            <th className="py-2 px-4 border-b">Bider Name</th>
+                            
+                            <th className="py-2 px-4 border-b">Status</th>
                             {/* <th className="py-2 px-4 border-b">Quantity</th>
                             <th className="py-2 px-4 border-b">Price</th> */}
                             <th className="py-2 px-4 border-b">Action</th>
@@ -86,13 +88,16 @@ const AllBids = () => {
                         {bids?.map((bid, index) => (
                             <tr key={bid._id}>
                                 <td className="py-2 px-4 border-b">{index + 1}</td>
-                                <td className="py-2 px-4 border-b">{bid.bidName}</td>
-                                <td className="py-2 px-4 border-b">{bid.category}</td>
-                                <td className="py-2 px-4 border-b">{bid.brand}</td>
+                                {/* <td className="py-2 px-4 border-b">{bid._id}</td> */}
+                                <td className="py-2 px-4 border-b">{bid?.SERVICE_ID?.TITLE}</td>
+                                <td className="py-2 px-4 border-b">{bid.STATUS}</td>
+                                <td className="py-2 px-4 border-b">{bid.STATUS}</td>
+                                {/* <td className="py-2 px-4 border-b">{bid.DETAILS}</td> */}
+                                {/* <td className="py-2 px-4 border-b">{bid.brand}</td> */}
 
 
-                                <td className="py-2 px-4 border-b">{bid.quantity}</td>
-                                <td className="py-2 px-4 border-b">{bid.price}</td>
+                                {/* <td className="py-2 px-4 border-b">{bid.quantity}</td>
+                                <td className="py-2 px-4 border-b">{bid.price}</td> */}
                                 <td className="py-2 px-4 border-b">
                                     <button onClick={()=>handleEdit(bid)} className="bg-blue-500 hover:bg-blue-600 text-white py-1 px-2 rounded mr-2">
                                         Edit

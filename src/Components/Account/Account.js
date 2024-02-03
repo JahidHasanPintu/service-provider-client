@@ -15,6 +15,7 @@ import MyProducts from './MyProducts/MyProducts';
 import Users from './Users/Users';
 import AllJobs from './AllJobs/AllJobs';
 import AllBids from './AllBids/AllBids';
+import AllOrder from './AllOrder/AllOrder';
 
 const Account = () => {
    
@@ -36,7 +37,7 @@ const Account = () => {
                                 <Route path="/edit-product/:prodID" element={<EditProduct/>}></Route>
                                 <Route path="/add-products" element={<AddNewProduct/>}></Route>
                                 <Route path="/my-order" element={<MyOrders/>}></Route>
-                                <Route path="/all-order" element={<MyOrders/>}></Route>
+                                <Route path="/all-order" element={<AllOrder/>}></Route>
                                 <Route path="/all-jobs" element={<AllJobs/>}></Route>
                                 <Route path="/all-bids" element={<AllBids/>}></Route>
                                 <Route path="/invoice" element={<InvoiceModal/>}></Route>
