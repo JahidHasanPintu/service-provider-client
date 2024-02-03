@@ -64,7 +64,7 @@ const Products = () => {
                     </div>
                     <div className="flex flex-row">
                         <input type="text" placeholder="Search product" className="w-3/5 p-3 rounded-l-lg sm:w-2/3" value={search} onChange={handleSearch} />
-                        <button type="button" className="w-2/5 p-3 font-semibold rounded-r-lg sm:w-1/3 bg-blue-400 text-gray-900">Search</button>
+                        <button type="button" className="w-2/5 p-3 font-semibold rounded-r-lg sm:w-1/3 bg-blue-400 text-white">Search</button>
                     </div>
                 </div>
 
