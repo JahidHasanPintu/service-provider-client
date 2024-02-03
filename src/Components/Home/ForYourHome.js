@@ -1,6 +1,22 @@
-import React from 'react';
-
+import React, { useEffect, useState } from 'react';
+import ForYourProduct from './ForYourProduct';
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 const ForYourHome = () => {
+    const settings = {
+        dots: true,
+        infinite: true,
+        speed: 500,
+        slidesToShow: 3,
+        slidesToScroll: 1
+      };
+    const [products,setProducts] = useState([])
+    useEffect(()=>{
+        fetch("http://localhost:5000/products")
+        .then(res=>res.json())
+        .then (data => setProducts(data.products))
+    },[])
     return (
         <div>
             <section className="bg-white text-gray-800">
@@ -9,52 +25,16 @@ const ForYourHome = () => {
                         <h2 className="text-3xl font-bold">For Your Home</h2>
 
                     </div>
-                    <div className="grid grid-cols-1 gap-x-4 gap-y-8 md:grid-cols-2 lg:grid-cols-4">
-                        <article className="flex flex-col bg-gray-100">
-                            <a rel="noopener noreferrer" href="#" aria-label="Te nulla oportere reprimique his dolorum">
-                                <img alt="" className="object-cover w-full h-52 bg-gray-500" src="https://source.unsplash.com/200x200/?fashion?1" />
-                            </a>
-                            <div className="flex flex-col flex-1 p-6">
-                                <a rel="noopener noreferrer" href="#" aria-label="Te nulla oportere reprimique his dolorum"></a>
-                                <a rel="noopener noreferrer" href="#" className="text-xs tracki uppercase hover:underline text-violet-400">Convenire</a>
-                                <h3 className="flex-1 py-2 text-lg font-semibold leadi">Te nulla oportere reprimique his dolorum</h3>
-
-                            </div>
-                        </article>
-                        <article className="flex flex-col bg-gray-100">
-                            <a rel="noopener noreferrer" href="#" aria-label="Te nulla oportere reprimique his dolorum">
-                                <img alt="" className="object-cover w-full h-52 bg-gray-500" src="https://source.unsplash.com/200x200/?fashion?2" />
-                            </a>
-                            <div className="flex flex-col flex-1 p-6">
-                                <a rel="noopener noreferrer" href="#" aria-label="Te nulla oportere reprimique his dolorum"></a>
-                                <a rel="noopener noreferrer" href="#" className="text-xs tracki uppercase hover:underline text-violet-400">Convenire</a>
-                                <h3 className="flex-1 py-2 text-lg font-semibold leadi">Te nulla oportere reprimique his dolorum</h3>
-
-                            </div>
-                        </article>
-                        <article className="flex flex-col bg-gray-100">
-                            <a rel="noopener noreferrer" href="#" aria-label="Te nulla oportere reprimique his dolorum">
-                                <img alt="" className="object-cover w-full h-52 bg-gray-500" src="https://source.unsplash.com/200x200/?fashion?3" />
-                            </a>
-                            <div className="flex flex-col flex-1 p-6">
-                                <a rel="noopener noreferrer" href="#" aria-label="Te nulla oportere reprimique his dolorum"></a>
-                                <a rel="noopener noreferrer" href="#" className="text-xs tracki uppercase hover:underline text-violet-400">Convenire</a>
-                                <h3 className="flex-1 py-2 text-lg font-semibold leadi">Te nulla oportere reprimique his dolorum</h3>
-
-                            </div>
-                        </article>
-                        <article className="flex flex-col bg-gray-100">
-                            <a rel="noopener noreferrer" href="#" aria-label="Te nulla oportere reprimique his dolorum">
-                                <img alt="" className="object-cover w-full h-52 bg-gray-500" src="https://source.unsplash.com/200x200/?fashion?4" />
-                            </a>
-                            <div className="flex flex-col flex-1 p-6">
-                                <a rel="noopener noreferrer" href="#" aria-label="Te nulla oportere reprimique his dolorum"></a>
-                                <a rel="noopener noreferrer" href="#" className="text-xs tracki uppercase hover:underline text-violet-400">Convenire</a>
-                                <h3 className="flex-1 py-2 text-lg font-semibold leadi">Te nulla oportere reprimique his dolorum</h3>
-
-                            </div>
-                        </article>
-                    </div>
+                    
+                     
+                      <Slider {...settings}>
+                        {products?.map(product =><ForYourProduct key={product._id} product={product} />
+                             )
+                             
+                           }
+                        
+                        </Slider>
+                      
                 </div>
             </section>
         </div>

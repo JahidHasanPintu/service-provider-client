@@ -28,7 +28,7 @@ const Footer = () => {
                 </div>
                 <div>
                     <span className="footer-title">{t('SCAN')}</span>
-                    <img src="https://chart.googleapis.com/chart?cht=qr&chl=https%3A%2F%2Fdattahardware.geniushubbd.com%2F&chs=180x180&choe=UTF-8&chld=L|2" className='w-[150px]' alt='qr code'/>
+                    <img src="https://cdn-icons-png.freepik.com/256/14021/14021431.png?uid=R95679985&ga=GA1.1.1242648836.1702358523&semt=ais" className='w-[150px]' alt='qr code'/>
                     
                 </div>
                 </footer>
