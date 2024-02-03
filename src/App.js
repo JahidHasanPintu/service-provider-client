@@ -23,6 +23,8 @@ import PostJob from './Components/PostJob/PostJob';
 import Jobs from './Components/Jobs/Jobs';
 import JobDetails from './Components/Jobs/JobDetails';
 import Products from './Components/Products/Products';
+import Checkout from './Components/Pages/Checkout/Checkout';
+import Confirmation from './Components/Pages/Checkout/Confirmation';
 function App() {
   return (
     <div className="App bg-slate-50">
@@ -43,6 +45,8 @@ function App() {
         </RequireAuth>}></Route>
 
         <Route path="/buy-sell" element={<Products />}></Route>
+        <Route path="/checkout" element={<Checkout />}></Route>
+        <Route path="/confirm" element={<Confirmation />}></Route>
         <Route path="/about" element={<About />}></Route>
         <Route path="/jobs" element={<Jobs />}></Route>
         <Route path="/job-details" element={<RequireAuth> <JobDetails /></RequireAuth>}></Route>
