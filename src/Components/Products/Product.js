@@ -15,7 +15,7 @@ const Product = (props) => {
         <h2 className="mb-2 text-lg font-medium dark:text-white text-gray-900">{product?.productName}</h2>
         <p className="mb-2 text-base dark:text-gray-300 text-gray-700">{product?.description}</p>
         <div className="flex items-center">
-          <p className="mr-2 text-lg font-semibold text-gray-900 dark:text-white">${product?.price} </p>
+          <p className="mr-2 text-lg font-semibold text-gray-900 dark:text-white">৳{product?.price} </p>
           <button onClick={handleCheckout} className="bg-blue-500 mx-auto hover:bg-blue-600 text-white py-1 px-2  rounded">
           Buy Now
                 </button>

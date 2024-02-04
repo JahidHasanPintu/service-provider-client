@@ -68,7 +68,7 @@ const PostJob = () => {
                                 name="BUDGET"
                                 value={formData.BUDGET}
                                 onChange={handleChange}
-                                placeholder="$ Budget"
+                                placeholder="৳ Budget"
                                 className="w-full p-2 border rounded"
                             />
                         </div>

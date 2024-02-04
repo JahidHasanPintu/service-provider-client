@@ -165,26 +165,6 @@ const JobDetails = () => {
                                 )}
 
                             </div>
-                            {/* <div data-aos="fade-up" className="categories-widget w-full bg-white p-[30px] mb-[30px] aos-init aos-animate">
-                                <h1 className="text-[22px] text-qblack font-bold mb-5">Categories</h1>
-                                <div className="w-full h-[1px] bg-[#DCDCDC] mb-5"></div>
-                                <ul className="flex flex-col space-y-5">
-                                    <li className="flex justify-between items-center group"><span className="text-base text-qgraytwo group-hover:text-qyellow">Development</span><span className="text-base text-qgraytwo group-hover:text-qyellow">(6)</span></li>
-                                    <li className="flex justify-between items-center group"><span className="text-base text-qgraytwo group-hover:text-qyellow">Guide</span><span className="text-base text-qgraytwo group-hover:text-qyellow">(6)</span></li>
-                                    <li className="flex justify-between items-center group"><span className="text-base text-qgraytwo group-hover:text-qyellow">Inspiration</span><span className="text-base text-qgraytwo group-hover:text-qyellow">(6)</span></li>
-                                    <li className="flex justify-between items-center group"><span className="text-base text-qgraytwo group-hover:text-qyellow">Latest News</span><span className="text-base text-qgraytwo group-hover:text-qyellow">(6)</span></li>
-                                    <li className="flex justify-between items-center group"><span className="text-base text-qgraytwo group-hover:text-qyellow">Revenew</span><span className="text-base text-qgraytwo group-hover:text-qyellow">(6)</span></li>
-                                    <li className="flex justify-between items-center group"><span className="text-base text-qgraytwo group-hover:text-qyellow">Start Up</span><span className="text-base text-qgraytwo group-hover:text-qyellow">(6)</span></li>
-                                    <li className="flex justify-between items-center group"><span className="text-base text-qgraytwo group-hover:text-qyellow">Technology</span><span className="text-base text-qgraytwo group-hover:text-qyellow">(6)</span></li>
-                                </ul>
-                            </div> */}
-                            {/* <div data-aos="fade-up" className="popular-tag-widget w-full bg-white p-[30px] mb-[30px] aos-init aos-animate">
-                    <h1 className="text-[22px] text-qblack font-bold mb-5">Popular Tags</h1>
-                    <div className="w-full h-[1px] bg-[#DCDCDC] mb-5"></div>
-                    <div className="filter-items">
-                        <div className="flex gap-[10px] flex-wrap"><span className="text-base bg-[#F9F3E9] hover:primary-bg-color text-[#9A9A9A] hover:text-qblack px-[14px] py-[6px] cursor-pointer mb-[5px]">Agency</span><span className="text-base bg-[#F9F3E9] hover:primary-bg-color text-[#9A9A9A] hover:text-qblack px-[14px] py-[6px] cursor-pointer mb-[5px]">Creative</span><span className="text-base bg-[#F9F3E9] hover:primary-bg-color text-[#9A9A9A] hover:text-qblack px-[14px] py-[6px] cursor-pointer mb-[5px]">Data</span><span className="text-base bg-[#F9F3E9] hover:primary-bg-color text-[#9A9A9A] hover:text-qblack px-[14px] py-[6px] cursor-pointer mb-[5px]">Technology</span><span className="text-base bg-[#F9F3E9] hover:primary-bg-color text-[#9A9A9A] hover:text-qblack px-[14px] py-[6px] cursor-pointer mb-[5px]">Development</span><span className="text-base bg-[#F9F3E9] hover:primary-bg-color text-[#9A9A9A] hover:text-qblack px-[14px] py-[6px] cursor-pointer mb-[5px]">Business</span><span className="text-base bg-[#F9F3E9] hover:primary-bg-color text-[#9A9A9A] hover:text-qblack px-[14px] py-[6px] cursor-pointer mb-[5px]">Idea</span><span className="text-base bg-[#F9F3E9] hover:primary-bg-color text-[#9A9A9A] hover:text-qblack px-[14px] py-[6px] cursor-pointer mb-[5px]">Generic</span></div>
-                    </div>
-                </div> */}
 
                         </div>
                     </div>

@@ -5,6 +5,8 @@ import { useSelector } from 'react-redux';
 import { useProducts } from '../../hooks/useProducts';
 import { Link, useNavigate } from 'react-router-dom';
 import postIcon from '../../assets/icons/post icon.png';
+import axios from 'axios';
+import { getApiUrl } from '../../api/apiURL';
 const Middlebar = () => {
     const [subtotal, setSubtotal] = useState(0);
     const getData = useSelector((state) => state.cartReducer);
@@ -23,12 +25,46 @@ const Middlebar = () => {
 
     const { t } = useTranslation();
 
-    const [searchTerm, setSearchTerm] = useState('');
+    const [search, setSearch] = useState('');
     const [showResults, setShowResults] = useState(false);
-    const [products, total] = useProducts(1, 100, searchTerm);
+    const [services, setServices] = useState([]);
+    const [page, setPage] = useState(1);
+    const [limit, setLimit] = useState(10);
+    const baseURL = getApiUrl();
+    // const [products, total] = useProducts(1, 100, search);
+
+    useEffect(() => {
+        // setLoading(true);
+
+        const fetchServices = async () => {
+            try {
+                const response = await axios.get(`${baseURL}/services`, {
+                  params: {
+                    page,
+                    limit,
+                    search,
+                  },
+                });
+        
+                const { success, services } = response.data;
+        
+                if (success) {
+                    setServices(services);
+                } else {
+                  console.error("Error fetching data");
+                }
+              } catch (error) {
+                console.error("Error fetching data", error);
+              }
+        };
+
+
+        fetchServices();
+       
+    }, [search]);
 
     const handleSearchInputChange = (event) => {
-        setSearchTerm(event.target.value);
+        setSearch(event.target.value);
         setShowResults(true);
 
     };
@@ -38,8 +74,10 @@ const Middlebar = () => {
     };
 
     const navigate = useNavigate();
-    const navigateToProductDetails = (product) => {
-        navigate(`/product-details/${product.id}`, { state: { product } });
+    
+    const navigateToProductDetails = (service) => {
+        // navigate(`/product-details/${product.id}`, { state: { product } });
+        navigate(`/job-details/${service._id}`, { state: { service } });
         setShowResults(false);
 
     }
@@ -67,7 +105,7 @@ const Middlebar = () => {
                                             type="text"
                                             className="search-input"
                                             placeholder={t('searchPlaceholder')}
-                                            value={searchTerm}
+                                            value={search}
                                             onChange={handleSearchInputChange}
                                             onBlur={handleSearchBlur}
                                         />
@@ -82,10 +120,10 @@ const Middlebar = () => {
                             {showResults && (
                                 <div className="search-results-dropdown absolute bg-white border border-gray-border w-full mt-2 z-10" ref={btnRef}>
                                     <ul>
-                                        {products?.slice(0, 8).map((product) => (
-                                            <li key={product.id}>
-                                                <p className="p-2 cursor-pointer" onClick={() => navigateToProductDetails(product)}>
-                                                    {product.name}
+                                        {services?.slice(0, 8).map((service) => (
+                                            <li key={service._id}>
+                                                <p className="p-2 cursor-pointer" onClick={() => navigateToProductDetails(service)}>
+                                                    {service.TITLE}
                                                 </p>
                                                 <hr />
                                             </li>

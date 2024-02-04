@@ -106,8 +106,8 @@ const Head = () => {
         setShowResults(false);
 
     }
-    const navigateToCategories = (catID) => {
-        navigate(`/buy-sell/${catID}`);
+    const navigateToCategories = (category) => {
+        navigate(`/jobs/`, {state:{category}});
 
 
     }
@@ -198,7 +198,7 @@ const Head = () => {
 
 
                                                                 <div
-                                                                    onClick={() => navigateToCategories(category.id)}
+                                                                    onClick={() => navigateToCategories(category)}
                                                                     className="flex justify-between items-center px-5 h-10 bg-white  transition-all duration-300 ease-in-out cursor-pointer text-qblack hover:primary-bg-color">
                                                                     <div className="flex items-center space-x-6">
                                                                         <img className='w-4' src={category.cat_image} alt={category.cat_name} />
@@ -236,9 +236,9 @@ const Head = () => {
                                                                     </div>
                                                                     <div className="category-items">
                                                                         <ul className="flex flex-col space-y-2">
-                                                                            <li><a href="/all-types"><span className="text-qgray text-sm font-400 border-b border-transparent hover:text-qyellow hover:border-qyellow">Electrician/ Electric Service </span></a></li>
-                                                                            <li><a href="/all-types"><span className="text-qgray text-sm font-400 border-b border-transparent hover:text-qyellow hover:border-qyellow">Plumbing & Sanitary Service  </span></a></li>
-                                                                            <li><a href="/all-types"><span className="text-qgray text-sm font-400 border-b border-transparent hover:text-qyellow hover:border-qyellow">Painting Service </span></a></li>
+                                                                            <li><a href="/jobs"><span className="text-qgray text-sm font-400 border-b border-transparent hover:text-qyellow hover:border-qyellow">Electrician/ Electric Service </span></a></li>
+                                                                            <li><a href="/jobs"><span className="text-qgray text-sm font-400 border-b border-transparent hover:text-qyellow hover:border-qyellow">Plumbing & Sanitary Service  </span></a></li>
+                                                                            <li><a href="/jobs"><span className="text-qgray text-sm font-400 border-b border-transparent hover:text-qyellow hover:border-qyellow">Painting Service </span></a></li>
 
                                                                         </ul>
                                                                     </div>
@@ -249,9 +249,9 @@ const Head = () => {
                                                                     </div>
                                                                     <div className="category-items">
                                                                         <ul className="flex flex-col space-y-2">
-                                                                            <li><a href="/all-types"><span className="text-qgray text-sm font-400 border-b border-transparent hover:text-qyellow hover:border-qyellow">Home Cleaning </span></a></li>
-                                                                            <li><a href="/all-types"><span className="text-qgray text-sm font-400 border-b border-transparent hover:text-qyellow hover:border-qyellow">Pest Control </span></a></li>
-                                                                            <li><a href="/all-types"><span className="text-qgray text-sm font-400 border-b border-transparent hover:text-qyellow hover:border-qyellow">Garden Clening</span></a></li>
+                                                                            <li><a href="/jobs"><span className="text-qgray text-sm font-400 border-b border-transparent hover:text-qyellow hover:border-qyellow">Home Cleaning </span></a></li>
+                                                                            <li><a href="/jobs"><span className="text-qgray text-sm font-400 border-b border-transparent hover:text-qyellow hover:border-qyellow">Pest Control </span></a></li>
+                                                                            <li><a href="/jobs"><span className="text-qgray text-sm font-400 border-b border-transparent hover:text-qyellow hover:border-qyellow">Garden Clening</span></a></li>
 
                                                                         </ul>
                                                                     </div>
@@ -262,8 +262,8 @@ const Head = () => {
                                                                     </div>
                                                                     <div className="category-items">
                                                                         <ul className="flex flex-col space-y-2">
-                                                                            <li><a href="/all-types"><span className="text-qgray text-sm font-400 border-b border-transparent hover:text-qyellow hover:border-qyellow">  House Shifting</span></a></li>
-                                                                            <li><a href="/all-types"><span className="text-qgray text-sm font-400 border-b border-transparent hover:text-qyellow hover:border-qyellow">Baby Sitter Service</span></a></li>
+                                                                            <li><a href="/jobs"><span className="text-qgray text-sm font-400 border-b border-transparent hover:text-qyellow hover:border-qyellow">  House Shifting</span></a></li>
+                                                                            <li><a href="/jobs"><span className="text-qgray text-sm font-400 border-b border-transparent hover:text-qyellow hover:border-qyellow">Baby Sitter Service</span></a></li>
 
                                                                         </ul>
                                                                     </div>

@@ -18,6 +18,7 @@ import AllBids from './AllBids/AllBids';
 import AllOrder from './AllOrder/AllOrder';
 import MyJobs from './MyJobs/MyJobs';
 import MyBids from './MyBids/MyBids';
+import BidsByJob from './MyJobs/BidsByJob';
 
 const Account = () => {
    
@@ -42,6 +43,8 @@ const Account = () => {
                                 <Route path="/all-order" element={<AllOrder/>}></Route>
                                 <Route path="/all-jobs" element={<AllJobs/>}></Route>
                                 <Route path="/jobs" element={<MyJobs/>}></Route>
+                                <Route path="/bids-by-jobs" element={<BidsByJob/>}></Route>
+                                <Route path="/bids-by-jobs/:jobID" element={<BidsByJob/>}></Route>
                                 <Route path="/all-bids" element={<AllBids/>}></Route>
                                 <Route path="/bids" element={<MyBids/>}></Route>
                                 <Route path="/invoice" element={<InvoiceModal/>}></Route>

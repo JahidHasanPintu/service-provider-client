@@ -10,13 +10,13 @@ const ForYourHome = () => {
         speed: 500,
         slidesToShow: 3,
         slidesToScroll: 1
-      };
-    const [products,setProducts] = useState([])
-    useEffect(()=>{
+    };
+    const [products, setProducts] = useState([])
+    useEffect(() => {
         fetch("http://localhost:5000/products")
-        .then(res=>res.json())
-        .then (data => setProducts(data.products))
-    },[])
+            .then(res => res.json())
+            .then(data => setProducts(data.products))
+    }, [])
     return (
         <div>
             <section className="bg-white text-gray-800">
@@ -25,16 +25,16 @@ const ForYourHome = () => {
                         <h2 className="text-3xl font-bold">For Your Home</h2>
 
                     </div>
-                    
-                     
-                      <Slider {...settings}>
-                        {products?.map(product =><ForYourProduct key={product._id} product={product} />
-                             )
-                             
-                           }
-                        
-                        </Slider>
-                      
+
+
+                    <Slider {...settings}>
+                        {products?.map(product => <ForYourProduct key={product._id} product={product} />
+                        )
+
+                        }
+
+                    </Slider>
+
                 </div>
             </section>
         </div>
