@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useOrders } from '../../../hooks/useOrders';
 import Loading from '../../Loading/Loading';
 import { useNavigate } from 'react-router-dom';
@@ -11,37 +11,23 @@ const Dashboard = () => {
     const [limit, setLimit] = useState(100);
 
     const navigate = useNavigate();
-    const navigateToInvoice = (order) => {
-        
-            navigate(`/account/invoice/${order.id}`, { state: { order: order } });
-        
 
-
-    };
-
-
-    const [orders, totalPages, totalItem, loading] = useOrders(page, limit, sortBy, userID);
-    if (loading) {
-        return <Loading />
-    }
-
-    let pendingCount = 0;
-    let deliveredCount = 0;
-    let unpaidCount = 0;
+    const [stats, setStats] = useState([]);
+    useEffect(() => {
+      fetch("http://localhost:5000/stats/totals")
+        .then((res) => res.json())
+        .then((data) => setStats(data));
+    }, []);
     
-    orders.forEach(order => {
-        if (order.order_status === "pending") {
-            pendingCount++;
-        } else if (order.order_status === "delivered") {
-            deliveredCount++;
-        }
+    const [orders, setOrders] = useState([]);
+    useEffect(() => {
+        fetch("http://localhost:5000/orders")
+            .then((res) => res.json())
+            .then((data) => setOrders(data.orders));
+    }, []);
 
-        if (order.payment_status === "unpaid") {
-            unpaidCount++;
-        }
-    });
 
-  
+
     return (
         <div>
             <div class="flex flex-col">
@@ -50,7 +36,7 @@ const Dashboard = () => {
                     <div class="shadow-lg bg-red-500 border-l-8 hover:bg-red-700 border-red-700 mb-2 p-2 md:w-1/4 mx-2">
                         <div class="p-4 flex flex-col">
                             <a href="#" class="no-underline text-white text-2xl">
-                                {totalItem}
+                                {stats?.orderCount}
                             </a>
                             <a href="#" class="no-underline text-white text-lg">
                                 Total Order
@@ -61,7 +47,7 @@ const Dashboard = () => {
                     <div class="shadow bg-info border-l-8 hover:bg-info-700 border-info mb-2 p-2 md:w-1/4 mx-2">
                         <div class="p-4 flex flex-col">
                             <a href="#" class="no-underline text-white text-2xl">
-                                {pendingCount}
+                            {stats?.bidCount}
                             </a>
                             <a href="#" class="no-underline text-white text-lg">
                                 Total Bids
@@ -72,7 +58,7 @@ const Dashboard = () => {
                     <div class="shadow bg-warning border-l-8 hover:bg-warning border-warning mb-2 p-2 md:w-1/4 mx-2">
                         <div class="p-4 flex flex-col">
                             <a href="#" class="no-underline text-white text-2xl">
-                            {deliveredCount}
+                            {stats?.serviceCount}
                             </a>
                             <a href="#" class="no-underline text-white text-lg">
                                 Total Jobs
@@ -83,7 +69,7 @@ const Dashboard = () => {
                     <div class="shadow bg-success border-l-8 hover:bg-success border-success mb-2 p-2 md:w-1/4 mx-2">
                         <div class="p-4 flex flex-col">
                             <a href="#" class="no-underline text-white text-2xl">
-                            {unpaidCount}
+                            {stats?.productCount}
                             </a>
                             <a href="#" class="no-underline text-white text-lg">
                                 Total Product
@@ -102,49 +88,59 @@ const Dashboard = () => {
                             <div class="font-bold text-xl">Recent Orders</div>
                         </div>
                         <div class="table-responsive">
-                            <table class="table text-greyest w-full">
-                                <thead class="bg-black ">
-                                    <tr className="bg-gray-200">
-                                        <th className="py-2 px-4 border-b">#</th>
-                                        <th className="py-2 px-4 border-b">Order ID</th>
-                                        <th className="py-2 px-4 border-b">Total</th>
-                                        <th className="py-2 px-4 border-b">Payment Status</th>
-                                        <th className="py-2 px-4 border-b">Trx ID</th>
-                                        <th className="py-2 px-4 border-b">Delivery Status</th>
-                                        <th className="py-2 px-4 border-b">Action</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    {orders.map((order, index) => (
-                                        <tr key={order.id}>
-                                            <td className="py-2 px-4 border-b">{index + 1}</td>
-                                            <td className="py-2 px-4 border-b">{order.order_number}</td>
-                                            <td className="py-2 px-4 border-b">{order.total}</td>
-                                            <td className="py-2 px-4 border-b">{order.payment_status}</td>
-                                            <td className="py-2 px-4 border-b">{order.transaction_id}</td>
-                                            <td className="py-2 px-4 border-b">{order.order_status}</td>
-                                            <td onClick={()=>navigateToInvoice(order)} className="py-2 px-4 border-b"><button className="bg-blue-500 hover:bg-blue-600 text-white py-1 px-2 rounded">
-                                                View
-                                            </button></td>
-                                        </tr>
-                                    ))}
-                                    {/* <tr>
-                                        <th scope="row">1</th>
-                                        <td>
-                                            <button class="bg-blue-500 hover:bg-blue-800 text-white font-light py-1 px-2 rounded-full">
-                                                Twitter
-                                            </button>
-                                        </td>
-                                        <td>4500</td>
-                                        <td>4600</td>
-                                        <td>
-                                            <span class="text-green-500"><i class="fas fa-arrow-up"></i>5%</span>
-                                        </td>
-                                    </tr> */}
+                        <table className="min-w-full border border-gray-300">
+                    <thead>
+                        <tr className="bg-gray-200">
+                            <th className="py-2 px-4 border-b">#</th>
+                            <th className="py-2 px-4 border-b">Image</th>
+                            <th className="py-2 px-4 border-b">Product Name</th>
+                            <th className="py-2 px-4 border-b">paymentMethod</th>
+                            <th className="py-2 px-4 border-b">orderStatus</th>
+                            <th className="py-2 px-4 border-b">paymentStatus</th>
+                            <th className="py-2 px-4 border-b">shippingCharge</th>
+                            <th className="py-2 px-4 border-b">total</th>
+                            
+                        </tr>
+                    </thead>
+                    <tbody className="text-center">
+                        {orders?.map((product, index) => (
+                            <tr key={product._id}>
+                                <td className="py-2 px-4 border-b">{index + 1}</td>
+                                <td className="py-2 px-4 border-b flex flex-col items-center">
+                                    <img
+                                        className="w-14 h-14 rounded-full "
+                                        src={product?.prodID?.imageLinks}
+                                    ></img>
+                                </td>
+                                <td className="py-2 px-4 border-b">
+                                    {product?.prodID?.productName}
+                                </td>
+                                <td className="py-2 px-4 border-b">{product.paymentMethod}</td>
+                                <td className="py-2 px-4 border-b">{product.orderStatus}</td>
+                                <td className="py-2 px-4 border-b">{product.paymentStatus}</td>
+                                <td className="py-2 px-4 border-b">{product.shippingCharge}</td>
 
+                                <td className="py-2 px-4 border-b">{product.total}</td>
+                                
 
-                                </tbody>
-                            </table>
+                                <td className="py-2 px-4 border-b">
+                                    {/* <button
+                                        onClick={() => handleEdit(product)}
+                                        className="bg-blue-500 hover:bg-blue-600 text-white py-1 px-2 rounded mr-2"
+                                    >
+                                        Edit
+                                    </button> */}
+                                    {/* <button
+                                        onClick={() => handleDelete(product._id)}
+                                        className="bg-red-500 hover:bg-red-600 text-white py-1 px-2 rounded"
+                                    >
+                                        Delete
+                                    </button> */}
+                                </td>
+                            </tr>
+                        ))}
+                    </tbody>
+                </table>
                         </div>
                     </div>
 

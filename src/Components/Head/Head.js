@@ -271,7 +271,7 @@ const Head = () => {
                                                             </div>
                                                             <div className="thumbnil w-[348px] h-full">
                                                                 <div className="w-full h-[235px]">
-                                                                    <img width="" src="https://moversbd.com/wp-content/uploads/2023/05/House-Shifting-Services-in-Paltan-Bazar-Dhaka.jpg" alt="" className="w-full h-full object-contain" />
+                                                                    <img width="" src="https://img.freepik.com/free-vector/house-moving-concept_23-2148659205.jpg" alt="" className="w-full h-full object-contain" />
                                                                 </div>
                                                             </div>
                                                         </div>
