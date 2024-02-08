@@ -36,8 +36,8 @@ const Users = () => {
         }
     };
 
-    const handleEdit = (product) => {
-        navigate(`/account/edit-product/${product._id}`, { state: { product } });
+    const handleEdit = (user) => {
+        navigate(`/account/settings/${user._id}`, { state: { user } });
     }
     
     return (

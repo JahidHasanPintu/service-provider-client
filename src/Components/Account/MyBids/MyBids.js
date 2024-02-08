@@ -30,6 +30,8 @@ const MyBids = () => {
             if (response.status === 200) {
                 toast.success("Bids deleted successfully")
                 console.log('Bids deleted successfully');
+                // setJobs(prevJobs => prevJobs.filter(job => job._id !== jobID));
+                setBids(prevBids=>prevBids.filter(bid =>bid._id !==prodID ));
                 // updateProducts();
             } else {
                 console.error('Failed to delete Bid');
@@ -50,8 +52,8 @@ const MyBids = () => {
                     <thead>
                         <tr className="bg-gray-200">
                             <th className="py-2 px-4 border-b">#</th>
-                            <th className="py-2 px-4 border-b">Job Title</th>
-                            <th className="py-2 px-4 border-b">Bider Name</th>
+                            <th className="py-2 px-4 border-b">Details</th>
+                            <th className="py-2 px-4 border-b">Service Id</th>
                             
                             <th className="py-2 px-4 border-b">Status</th>
                             {/* <th className="py-2 px-4 border-b">Quantity</th>
@@ -65,7 +67,7 @@ const MyBids = () => {
                                 <td className="py-2 px-4 border-b">{index + 1}</td>
                                 {/* <td className="py-2 px-4 border-b">{bid._id}</td> */}
                                 <td className="py-2 px-4 border-b">{bid?.DETAILS}</td>
-                                <td className="py-2 px-4 border-b">{bid.STATUS}</td>
+                                <td className="py-2 px-4 border-b">{bid.SERVICE_ID}</td>
                                 <td className="py-2 px-4 border-b">{bid.STATUS}</td>
                                 {/* <td className="py-2 px-4 border-b">{bid.DETAILS}</td> */}
                                 {/* <td className="py-2 px-4 border-b">{bid.brand}</td> */}
@@ -74,9 +76,9 @@ const MyBids = () => {
                                 {/* <td className="py-2 px-4 border-b">{bid.quantity}</td>
                                 <td className="py-2 px-4 border-b">{bid.price}</td> */}
                                 <td className="py-2 px-4 border-b">
-                                    <button onClick={()=>handleEdit(bid)} className="bg-blue-500 hover:bg-blue-600 text-white py-1 px-2 rounded mr-2">
+                                    {/* <button onClick={()=>handleEdit(bid)} className="bg-blue-500 hover:bg-blue-600 text-white py-1 px-2 rounded mr-2">
                                         Edit
-                                    </button>
+                                    </button> */}
                                     <button onClick={()=>handleDelete(bid._id)} className="bg-red-500 hover:bg-red-600 text-white py-1 px-2 rounded">
                                         Delete
                                     </button>

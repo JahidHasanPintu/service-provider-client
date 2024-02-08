@@ -50,6 +50,7 @@ const Account = () => {
                                 <Route path="/invoice" element={<InvoiceModal/>}></Route>
                                 <Route path="/invoice/:inVID" element={<InvoiceModal/>}></Route>
                                 <Route path="/settings" element={<Settings/>}></Route>
+                                <Route path="/settings/:userID" element={<Settings/>}></Route>
                                 <Route path="/users" element={<Users/>}></Route>
                                 <Route path="/*" element={<Outlet />} />
                                 

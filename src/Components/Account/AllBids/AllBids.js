@@ -55,6 +55,7 @@ const AllBids = () => {
             if (response.status === 200) {
                 toast.success("Bids deleted successfully")
                 console.log('Bids deleted successfully');
+                setBids(prevBids=>prevBids.filter(bid =>bid._id !==prodID ));
                 // updateProducts();
             } else {
                 console.error('Failed to delete Bid');
@@ -99,9 +100,9 @@ const AllBids = () => {
                                 {/* <td className="py-2 px-4 border-b">{bid.quantity}</td>
                                 <td className="py-2 px-4 border-b">{bid.price}</td> */}
                                 <td className="py-2 px-4 border-b">
-                                    <button onClick={()=>handleEdit(bid)} className="bg-blue-500 hover:bg-blue-600 text-white py-1 px-2 rounded mr-2">
+                                    {/* <button onClick={()=>handleEdit(bid)} className="bg-blue-500 hover:bg-blue-600 text-white py-1 px-2 rounded mr-2">
                                         Edit
-                                    </button>
+                                    </button> */}
                                     <button onClick={()=>handleDelete(bid._id)} className="bg-red-500 hover:bg-red-600 text-white py-1 px-2 rounded">
                                         Delete
                                     </button>

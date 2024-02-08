@@ -35,30 +35,31 @@ const AllJobs = () => {
     return <Loading />;
   }
 
-  const handleDelete = async (prodID) => {
+  const handleDelete = async (jobID) => {
     try {
       const response = await axios.delete(
-        `${baseURL}/products/delete/${prodID}`
+        `${baseURL}/services/${jobID}`
       );
       if (response.status === 200) {
-        toast.success("Product deleted successfully");
-        console.log("Product deleted successfully");
-        updateProducts();
+        toast.success("Service deleted successfully");
+        console.log("Service deleted successfully");
+        setJobs(prevJobs => prevJobs.filter(job => job._id !== jobID));
+        // updateProducts();
       } else {
-        console.error("Failed to delete product");
+        console.error("Failed to delete service");
       }
     } catch (error) {
       console.error("Error deleting product:", error);
     }
   };
 
-  const handleEdit = (product) => {
-    navigate(`/account/edit-product/${product._id}`, { state: { product } });
+  const handleEdit = (job) => {
+    navigate(`/account/bids-by-jobs/${job._id}`, { state: { job } });
   };
 
   return (
     <div>
-      <Link to={"/account/add-products"}>
+      <Link to={"/post-a-job"}>
         <button className="bg-blue-500 hover:bg-blue-600 text-white py-1 px-2 my-2 rounded">
           Add New Job
         </button>
@@ -92,7 +93,7 @@ const AllJobs = () => {
                     onClick={() => handleEdit(product)}
                     className="bg-blue-500 hover:bg-blue-600 text-white py-1 px-2 rounded mr-2"
                   >
-                    Edit
+                    View
                   </button>
                   <button
                     onClick={() => handleDelete(product._id)}
