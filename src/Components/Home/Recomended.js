@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const Recomended = () => {
 
@@ -27,7 +27,7 @@ const Recomended = () => {
                     <div className="grid grid-cols-1 gap-x-4 gap-y-8 md:grid-cols-2 lg:grid-cols-3 ">
 
                         {
-                            services?.map(service =>
+                            services?.slice(0, 6).map(service =>
                                 <div key={service._id} className='border text-start px-12 py-4 gap-y-4 shadow-md rounded-md h-[250px] flex  flex-col  bg-gray-200 text-black relative ' >
                                     <div>
                                         <p className='uppercase'>{service.TITLE}</p>
@@ -47,6 +47,9 @@ const Recomended = () => {
                         }
 
                     </div>
+                   <div>
+                   <Link  className="font-lg font-medium" to={"/jobs"}>Show more</Link>
+                   </div>
                 </div>
             </section>
         </div>
