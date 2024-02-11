@@ -283,12 +283,7 @@ const Head = () => {
                                             </li>
 
                                             <li><Link to={"/buy-sell"}><span className="flex items-center text-sm font-600 cursor-pointer primary-text-color"><span>Buy and Sell</span></span></Link></li>
-                                            {/* <li><Link to={"/about"}><span className="flex items-center text-sm font-600 cursor-pointer primary-text-color"><span>About</span></span></Link></li>
-                                            <li><Link to={"/contact"}><span className="flex items-center text-sm font-600 cursor-pointer primary-text-color"><span>Contact</span></span></Link></li>
-                                            <li><Link to={"/faq"}><span className="flex items-center text-sm font-600 cursor-pointer primary-text-color"><span>FAQ</span></span></Link></li>
-                                            <li><Link to={"/privacy-policy"}><span className="flex items-center text-sm font-600 cursor-pointer primary-text-color"><span>Privacy Policy</span></span></Link></li>
-                                            <li><Link to={"/terms-condition"}><span className="flex items-center text-sm font-600 cursor-pointer primary-text-color"><span>Terms</span></span></Link></li> */}
-
+                                            <li><Link to={"/maps"}><span className="flex items-center text-sm font-600 cursor-pointer primary-text-color"><span>serviceMaps</span></span></Link></li>
                                         </ul>
                                     </div>
                                 </div>

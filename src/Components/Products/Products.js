@@ -16,45 +16,6 @@ const Products = () => {
 
     return (
         <div className='flex'>
-            <aside className="w-full p-6 sm:w-40 bg-gray-100 dark:text-gray-100">
-                <nav className="space-y-8 text-sm">
-                    <div className="space-y-2">
-                        <h2 className="text-sm font-semibold tracking-widest uppercase dark:text-gray-400">Category</h2>
-                        <div className="flex flex-col space-y-1">
-                            <a rel="noopener noreferrer" href="#">Shoe</a>
-                            <a rel="noopener noreferrer" href="#">Mobile</a>
-
-                        </div>
-                    </div>
-                    <div className="space-y-2">
-                        <h2 className="text-sm font-semibold tracking-widest uppercase dark:text-gray-400">Price Range</h2>
-                        <div className="flex flex-col space-y-1">
-                            <a rel="noopener noreferrer" href="#">300Tk</a>
-                            <a rel="noopener noreferrer" href="#">5000TK</a>
-
-                        </div>
-                    </div>
-                    <div className="space-y-2">
-                        <h2 className="text-sm font-semibold tracking-widest uppercase dark:text-gray-400">Brands</h2>
-                        <div className="flex flex-col space-y-1">
-                            <a rel="noopener noreferrer" href="#">Bata</a>
-                            <a rel="noopener noreferrer" href="#">Apex</a>
-                            <a rel="noopener noreferrer" href="#">Samsung</a>
-                            <a rel="noopener noreferrer" href="#">Apple</a>
-                        </div>
-                    </div>
-                    <div className="space-y-2">
-                        <h2 className="text-sm font-semibold tracking-widest uppercase dark:text-gray-400">My Products</h2>
-                        <div className="flex flex-col space-y-1">
-                            <a rel="noopener noreferrer" href="#">No Saved Product</a>
-
-                        </div>
-                    </div>
-                </nav>
-            </aside>
-            <aside >
-
-            </aside>
             <div className='mx-5 w-full'>
 
                 <div className="mt-2 px-2 flex flex-row items-center self-center justify-center flex-shrink-0 shadow-md lg:justify-between">
@@ -71,7 +32,7 @@ const Products = () => {
                 {loading ? (
                     <Loading />
                 ) : (
-                    <div className="grid grid-cols-3 gap-2 justify-items-center mt-2 mb-5">
+                    <div className="grid grid-cols-4 gap-1 justify-items-center mt-2 mb-5">
                         {products?.map(product => (
                             <Product key={product._id} product={product} />
                         ))}

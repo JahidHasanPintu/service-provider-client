@@ -25,6 +25,7 @@ import JobDetails from './Components/Jobs/JobDetails';
 import Products from './Components/Products/Products';
 import Checkout from './Components/Pages/Checkout/Checkout';
 import Confirmation from './Components/Pages/Checkout/Confirmation';
+import ProviderMaps from './Components/ProviderMaps/ProviderMaps';
 function App() {
   return (
     <div className="App bg-slate-50">
@@ -49,6 +50,7 @@ function App() {
         <Route path="/confirm" element={<Confirmation />}></Route>
         <Route path="/about" element={<About />}></Route>
         <Route path="/jobs" element={<Jobs />}></Route>
+        <Route path="/maps" element={<ProviderMaps />}></Route>
         <Route path="/job-details" element={<RequireAuth> <JobDetails /></RequireAuth>}></Route>
         <Route path="/job-details/:jobID" element={<RequireAuth> <JobDetails /></RequireAuth>}></Route>
 
