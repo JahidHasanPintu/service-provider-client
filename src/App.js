@@ -26,6 +26,7 @@ import Products from './Components/Products/Products';
 import Checkout from './Components/Pages/Checkout/Checkout';
 import Confirmation from './Components/Pages/Checkout/Confirmation';
 import ProviderMaps from './Components/ProviderMaps/ProviderMaps';
+import SearchResult from './Components/Pages/SearchResult/SearchResult';
 function App() {
   return (
     <div className="App bg-slate-50">
@@ -39,6 +40,7 @@ function App() {
         <Route path="/terms-condition" element={<Terms />}></Route>
         <Route path="/contact" element={<Contact />}></Route>
         <Route path="/faq" element={<Faq />}></Route>
+        <Route path="/search-result" element={<SearchResult />}></Route>
 
 
         <Route path="/account/*" element={<RequireAuth>

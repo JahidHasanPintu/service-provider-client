@@ -82,6 +82,16 @@ const Middlebar = () => {
 
     }
 
+    const handleSearchResult = () =>{
+        navigate(`/search-result`, { state: { search } });
+    }
+    const handleKeyDown = (event) => {
+        if (event.key === 'Enter') {
+            event.preventDefault(); // Prevent default behavior of Enter key
+            handleSearchResult();
+        }
+    };
+
     const btnRef = useRef();
     useEffect(() => {
         const closeMenu = (e) => { if (!btnRef.current.contains(e.target)) { setShowResults(false); } };
@@ -108,11 +118,13 @@ const Middlebar = () => {
                                             value={search}
                                             onChange={handleSearchInputChange}
                                             onBlur={handleSearchBlur}
+                                            onKeyDown={handleKeyDown}
+                                            
                                         />
                                     </form>
                                 </div>
 
-                                <button className="w-[93px] h-full primary-bg-color text-sm font-600 search-btn" type="button">
+                                <button onClick={handleSearchResult} className="w-[93px] h-full primary-bg-color text-sm font-600 search-btn" type="button">
                                     {t('search')}
                                 </button>
                             </div>

@@ -35,7 +35,10 @@ const Job = (props) => {
         <div className="text-start card w-96 bg-base-200 shadow-xl">
             <div className="card-body">
                 <h2 className="card-title text-xl font-bold">{TITLE.slice(0, 30)}</h2>
+                <div className="flex justify-between">
                 <p className='text-xs'>Posted {timeAgo(createdAt)}</p>
+                <p className='text-xs'>Area: {props.service?.LOCATION}</p>
+                </div>
                 <div className="flex justify-between">
                     <p className="flex-1 text-blue-600">Time Require: {DURATION}</p>
                     <p className="flex-1 font-bold text-red-500">Budget: ৳ {BUDGET}</p>
